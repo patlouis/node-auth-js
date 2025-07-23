@@ -26,7 +26,7 @@ function Signup() {
 
     try {
       await axios.post('http://localhost:3000/auth/signup', values);
-      navigate('/');
+      navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || 'Signup failed.');
     }
