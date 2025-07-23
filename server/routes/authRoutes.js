@@ -20,7 +20,7 @@ router.post('/signup', async (req, res) => {
         );
 
         if (existingUser.length > 0) {
-        return res.status(409).json({ message: 'Email already in use.' });
+        return res.status(409).json({ message: 'Email already exists.' });
         }
 
         // Hash the password
@@ -44,7 +44,7 @@ router.post('/login', async (req, res) => {
         if(noExisting.length === 0) {
             return res.status(401).json({ message: 'User does not exist.' });
         }
-        const isMatch = bcrypt.compare(password, noExisting[0].password);
+        const isMatch = await bcrypt.compare(password, noExisting[0].password);
         if (!isMatch) {
             return res.status(401).json({ message: 'Wrong password.' });
         }
