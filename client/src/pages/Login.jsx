@@ -29,10 +29,7 @@ function Login() {
       const res = await axios.post('http://localhost:3000/auth/login', formData);
 
       const token = res.data.token;
-      localStorage.setItem('token', token); // ✅ Save token
-
-      // Optionally save user info (if returned)
-      // localStorage.setItem('user', JSON.stringify(res.data.user));
+      localStorage.setItem('token', res.data.token);
 
       navigate('/home');
     } catch (err) {
