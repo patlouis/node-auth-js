@@ -26,7 +26,7 @@ function Signup() {
 
     try {
       await axios.post('http://localhost:3000/auth/signup', values);
-      navigate('/login');
+      navigate('/');
     } catch (err) {
       setError(err.response?.data?.message || 'Signup failed.');
     }
@@ -90,7 +90,7 @@ function Signup() {
 
         <p className="text-sm text-gray-600 text-center mt-6">
           Already have an account?{' '}
-          <Link to="/login" className="text-blue-600 hover:underline">
+          <Link to="/" className="text-blue-600 hover:underline">
             Log in
           </Link>
         </p>
