@@ -8,7 +8,6 @@ const router = express.Router();
 router.post('/signup', async (req, res) => {
     const { username, email, password } = req.body;
 
-    // Validate input
     if (!username || !email || !password) {
         return res.status(400).json({ message: 'All fields are required.' });
     }      
@@ -23,10 +22,8 @@ router.post('/signup', async (req, res) => {
         return res.status(409).json({ message: 'Email already exists.' });
         }
 
-        // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Insert user into DB
         await db.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword]
         );
         return res.status(201).json({ message: 'User created successfully.' });
