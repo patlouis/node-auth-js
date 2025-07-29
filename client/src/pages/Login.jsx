@@ -25,7 +25,7 @@ function Login() {
 
     try {
       await axios.post('http://localhost:3000/auth/login', formData);
-      navigate('/');
+      navigate('/home');
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid login credentials.');
     }
